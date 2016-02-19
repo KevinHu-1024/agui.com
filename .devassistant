@@ -1,0 +1,103 @@
+dependencies:
+- rpm:
+  - nodejs
+  - npm
+- rpm:
+  - node-gyp
+  - nodejs-abbrev
+  - nodejs-ansi
+  - nodejs-archy
+  - nodejs-asn1
+  - nodejs-assert-plus
+  - nodejs-async
+  - nodejs-aws-sign
+  - nodejs-block-stream
+  - nodejs-boom
+  - nodejs-buffer-crc32
+  - nodejs-bytes
+  - nodejs-child-process-close
+  - nodejs-chmodr
+  - nodejs-chownr
+  - nodejs-cmd-shim
+  - nodejs-combined-stream
+  - nodejs-commander
+  - nodejs-config-chain
+  - nodejs-connect
+  - nodejs-cookie
+  - nodejs-cookie-jar
+  - nodejs-cookie-signature
+  - nodejs-couch-login
+  - nodejs-cryptiles
+  - nodejs-ctype
+  - nodejs-debug
+  - nodejs-delayed-stream
+  - nodejs-devel
+  - nodejs-editor
+  - nodejs-express
+  - nodejs-forever-agent
+  - nodejs-form-data
+  - nodejs-formidable
+  - nodejs-fresh
+  - nodejs-fstream
+  - nodejs-fstream-ignore
+  - nodejs-fstream-npm
+  - nodejs-github-url-from-git
+  - nodejs-graceful-fs
+  - nodejs-hawk
+  - nodejs-hoek
+  - nodejs-http-signature
+  - nodejs-inherits
+  - nodejs-ini
+  - nodejs-init-package-json
+  - nodejs-json-stringify-safe
+  - nodejs-keypress
+  - nodejs-lockfile
+  - nodejs-lru-cache
+  - nodejs-methods
+  - nodejs-mime
+  - nodejs-minimatch
+  - nodejs-mkdirp
+  - nodejs-mute-stream
+  - nodejs-node-uuid
+  - nodejs-nopt
+  - nodejs-normalize-package-data
+  - nodejs-npm-registry-client
+  - nodejs-npm-user-validate
+  - nodejs-npmconf
+  - nodejs-npmlog
+  - nodejs-oauth-sign
+  - nodejs-once
+  - nodejs-opener
+  - nodejs-osenv
+  - nodejs-packaging
+  - nodejs-pause
+  - nodejs-promzard
+  - nodejs-proto-list
+  - nodejs-qs
+  - nodejs-range-parser
+  - nodejs-read
+  - nodejs-read-installed
+  - nodejs-read-package-json
+  - nodejs-request
+  - nodejs-retry
+  - nodejs-rimraf
+  - nodejs-semver
+  - nodejs-send
+  - nodejs-sha
+  - nodejs-sigmund
+  - nodejs-slide
+  - nodejs-sntp
+  - nodejs-tar
+  - nodejs-tunnel-agent
+  - nodejs-uid-number
+  - nodejs-which
+  - v8
+  - v8-devel
+- npm:
+  - glob
+devassistant_version: 0.11.2
+original_kwargs:
+  name: "/home/kevin/\u6587\u6863/testAJAX/testAJAX"
+project_type:
+- nodejs
+- express
