@@ -13,10 +13,11 @@ leftBar.onclick = function (e) {
 		x1.onreadystatechange=function() {
 		  if (x1.readyState==4 && x1.status==200)
 		    {
-		    rightContent.innerHTML = x1.responseText;
+		    	console.dir(x1);
+			    rightContent.innerHTML = x1.responseText;
 		    }
 		 }
-		x1.open("GET","main.html",true);
+		x1.open("GET","/main",true);
 		x1.send();
 	}
 	if (e.target.id === "btnQues") {
