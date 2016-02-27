@@ -1,0 +1,23 @@
+html(lang="zh_CN")
+	head
+		meta(charset="utf-8")
+		title=title
+		link(rel="stylesheet/less", type="text/css", href="less/index.less")
+		script(src="lib/less.js")
+		script(src="lib/jquery.js")
+		link(rel="stylesheet", href="lib/font-awesome.min.css")
+	body
+		aside(id="left-bar")
+			div(id="user-photo")
+				img(src="img/untitled.jpg", alt="photo")
+			div(id="enters")
+				span(class="enters-icon")
+					i(id="btnHome" class=" icon-home icon-2x")
+				span(class="enters-icon")
+					i(id="btnQues" class=" icon-group icon-2x")
+			div(id="about", class="enters-icon")
+				span(class="enters-icon")
+					i(id="btnAbout" class="icon-info-sign icon-large")
+		section(id="right-content")
+			block content
+	script(src="js/ajax.js")
