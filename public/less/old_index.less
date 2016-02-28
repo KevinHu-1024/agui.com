@@ -1,0 +1,92 @@
+//Default Value
+@theme-grey: #ddd;
+@theme-white: #fff;
+@user-photo-border: grey;
+@selected-grey: #999;
+//Common Style
+html, body, section, aside, div, p, h1, h2, h3, h4, span {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+
+//Styles
+#left-bar {
+	position: absolute;
+	top: 0;
+	display: inline-block;
+	width: 70px;
+	height: 620px;
+	background-color: @theme-grey;
+}
+#user-photo {
+	position: absolute;
+	top: 30px;
+	left: 20px;
+	width: 70px;
+	height: 70px;
+	border: 5px solid @user-photo-border;
+	border-radius: 10%;
+	img {
+		width: 100%;
+		height: 100%;
+	}
+}
+#enters {
+	position: relative;
+	top: 180px;
+	width: 30px;
+	margin: 0 auto;
+	color: @theme-white;
+}
+#about {
+	position: absolute;
+	bottom: 30px;
+	width: 70px;
+	text-align: center;
+	color: @theme-white;
+}
+.enters-icon {
+	display: block;
+	margin-bottom: 80px;
+	cursor: pointer;
+	i:hover {
+		color: @selected-grey;
+	}
+}
+
+
+#right-content {
+	display: inline-block;
+	width: 1000px;
+	height: 620px;
+	margin-left: 70px;
+	background-color: lightblue;
+    h1, h3, p {
+        margin: 0 auto;
+        text-align: center;
+    }
+    aside {
+        width: 500px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    div.index {
+        display: inline-block;
+        width: 400px;
+        height: 400px;
+        margin: 50px;
+        background-color: #999;
+        h3 {
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
+}

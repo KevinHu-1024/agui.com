@@ -27,42 +27,54 @@ html(lang="zh_CN")
                         span.icon-bar
                         span.icon-bar
                         span.icon-bar
-                    a.navbar-brand(href='#') Project name
+                    a.navbar-brand(href='#')=title
                 div#navbar.navbar-collapse.collapse
                     form.navbar-form.navbar-right
                         div.form-group
-                            input.form-control(type='text', placeholder='Email')
+                            input.form-control(type='text', placeholder='用户名/QQ/邮箱')
                         div.form-group
-                            input.form-control(type='password', placeholder='Password')
-                        button.btn.btn-success(type='submit') Sign in
-                // /.navbar-collapse
-        // Main jumbotron for a primary marketing message or call to action
+                            input.form-control(type='password', placeholder='密码')
+                        button.btn.btn-success(type='submit') 登录
         div.jumbotron
             div.container
-                h1 Hello, world!
-                p This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
+                h1 Hello, kevin!
+                p 一花一世界
+                p 一茶一朋友
+                p 占位
+                p 占位
+                p 占位
+                p 占位
+                p 占位
+                p 占位
                 p
-                    a.btn.btn-primary.btn-lg(href='#', role='button') Learn more &raquo;
+                    a.btn.btn-primary.btn-lg(href='#', role='button') 关于阿贵心理指数 &raquo;
         div.container
             // Example row of columns
             div.row
                 .col-md-4
-                    h2 Heading
+                    h2 心理指数
                     p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
                     p
-                        a.btn.btn-default(href='#', role='button') View details &raquo;
+                        a.btn.btn-default(href='#', role='button') 点击查看心理指数 &raquo;
                 div.col-md-4
-                    h2 Heading
+                    h2 调查问卷
                     p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
                     p
-                        a.btn.btn-default(href='#', role='button') View details &raquo;
+                        a.btn.btn-default(href='#', role='button') 点击填写问卷 &raquo;
                 div.col-md-4
-                    h2 Heading
-                    p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                    h2 关于阿贵
+                    p 独立证券投资人 | 中国股市量化交易阿贵指数创建人
+                    p 趋势交易者 |《中国股市趋势交易之道》作者
+                    p 知名十年新浪独立证券评论人 | 知名雪球独立证券评论人
+                    p 
+                        a(href='#') 雪球 &nbsp
+                        a(href='#') 新浪博客 &nbsp
+                        a(href='#') 新浪微博 &nbsp
                     p
-                        a.btn.btn-default(href='#', role='button') View details &raquo;
+                        a.btn.btn-default(href='#', role='button') 关于本站 &raquo;
             hr
             footer
+                p 在线人数 访问量
                 p &copy; Company 2014
                     
     script(src='//cdn.bootcss.com/jquery/1.11.3/jquery.min.js')
