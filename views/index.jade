@@ -2,14 +2,20 @@ html(lang="zh_CN")
 	head
 		meta(charset="utf-8")
 		title=title
+        // bootstrap
+        link(rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css")
+        script(src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js")
+        script(src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js")     
+        // 自定义样式
 		link(rel="stylesheet/less", type="text/css", href="less/index.less")
+        //less
 		script(src="lib/less.js")
-		script(src="lib/jquery.js")
+        //字体
 		link(rel="stylesheet", href="lib/font-awesome.min.css")
 	body
 		aside(id="left-bar")
 			div(id="user-photo")
-				img(src="img/untitled.jpg", alt="photo")
+				img(src="imgages/untitled.jpg", alt="photo")
 			div(id="enters")
 				span(class="enters-icon")
 					i(id="btnHome" class=" icon-home icon-2x")
@@ -20,4 +26,4 @@ html(lang="zh_CN")
 					i(id="btnAbout" class="icon-info-sign icon-large")
 		section(id="right-content")
 			block content
-	script(src="js/ajax.js")
+	script(src="javascripts/ajax.js")

@@ -22,9 +22,8 @@ a {
 	position: absolute;
 	top: 0;
 	display: inline-block;
-	float: left;
 	width: 70px;
-	height: 680px;
+	height: 620px;
 	background-color: @theme-grey;
 }
 #user-photo {
@@ -67,12 +66,27 @@ a {
 #right-content {
 	display: inline-block;
 	width: 1000px;
-	height: 680px;
+	height: 620px;
 	margin-left: 70px;
 	background-color: lightblue;
-	h1 {
-		width: 100px;
-        height: 30px;
-		margin: 0 auto;
-	}
+    h1, h3, p {
+        margin: 0 auto;
+        text-align: center;
+    }
+    aside {
+        width: 500px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    div.index {
+        display: inline-block;
+        width: 400px;
+        height: 400px;
+        margin: 50px;
+        background-color: #999;
+        h3 {
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
 }

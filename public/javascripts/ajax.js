@@ -8,6 +8,7 @@ var rightContent = document.getElementById('right-content');
 leftBar.onclick = function (e) {
 	if (e.target.id === "btnHome") {
 		console.log("home");
+        rightContent.innerHTML = "正在向服务器获取数据...";
 		//handle
 		var x1 = new XMLHttpRequest();
 		x1.onreadystatechange=function() {
@@ -22,6 +23,7 @@ leftBar.onclick = function (e) {
 	}
 	if (e.target.id === "btnQues") {
 		console.log("ques");
+        rightContent.innerHTML = "正在向服务器获取数据...";
 		//handle
 		var x2 = new XMLHttpRequest();
 		x2.onreadystatechange=function() {
@@ -30,7 +32,7 @@ leftBar.onclick = function (e) {
 		    rightContent.innerHTML = x2.responseText;
 		    }
 		 }
-		x2.open("GET","ques.html",true);
+		x2.open("GET","/que",true);
 		x2.send();
 	}
 	if (e.target.id === "btnAbout") {
