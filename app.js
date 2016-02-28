@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-
+app.locals.pretty = true;
 app.get('/', routes.index);
 app.get('/main', home.wel);
 app.get('/que', question.data);
