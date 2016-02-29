@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-//var users = require('./routes/users');//没用了
+
 
 var app = express();
 
@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.locals.pretty = true;//jade不压缩
 
 app.use('/', routes);
-//app.use('/users', users);//没用了
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
