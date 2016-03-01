@@ -1,1 +1,77 @@
-p 第一题
+- var questions = [{"id": "FSawdAae", "index": "1", "flag": "comboxSlt", "content": "收盘后您此时的心情如何呀？", "area": ["简单：赚钱了，开心", "简单：今儿亏了，不爽", "你们眼中分大涨、小涨。我，踏空中，不爽", "探底回升，要继续上涨了，期待中", "空仓中，看戏，看戏"], "hasDiscuss": true, "isMust":true, "tips": []}, {"id": "FSasrSae", "index": "2", "flag": "fillInput", "content": "上一题的标准选项代表不了我此时的心情，我的心情我自己说", "area": [], "hasDiscuss": false, "isMust":false, "tips": []}, {"id": "RsdfasrSae", "index": "3", "flag": "radio", "content": "截止今天收盘，您准确的仓位是：", "area": ["空仓", "0-9%", "10-19%", "20-29%", "30-39%", "40-49%", "50-59%", "60-69%", "70-79%", "80-89%", "90-100%"], "hasDiscuss": true, "isMust":true, "tips": ["提示：从这一题开始，是今天的正式问卷，请认真选择最接近你的选项"]}, {"id": "BdferSae", "index": "4", "flag": "checkbox", "content": "您的融资融券情况？", "area": ["没有融资、融券开户", "有融资融券开户但没有操作", "担保比130-149%", "担保比150-199%", "担保比200-249%", "担保比250-299%", "担保比300%以上", "有融券卖空"], "hasDiscuss": false, "isMust":true, "tips": ["提示：本题为多选题，因为，不排除有做对冲，既有融券，也有融券卖空"]}, {"id": "QSasrSae", "index": "5", "flag": "fillInput", "content": "今天调查完成了，请签上您的大名吧", "area": [], "hasDiscuss": true, "isMust":false, "tips": ["请您务必使用您在市场调查QQ群中的同名的昵称。", "自2016年1月1日起，本调查将本着'贡献一份力量，分享一份成果'的原则，只向每月基本完成问卷（一个月内因为忙和偶尔漏填，累计1-5天，都表示理解）的客官提供。"]}];
+
+mixin qBody(index, content)
+    p(class="question-pargraph")
+        span(class="question-index")=index
+        =content
+mixin radio(radios)
+    each radio in radios
+        label(class="question-input-label")
+            input(class="question-input", type='radio')
+            =radio
+    
+mixin  checkbox(checkboxs)
+    each checkbox in checkboxs
+        label(class="question-input-label")
+            input(class="question-input", type='checkbox')
+            =checkbox
+    
+mixin fillInput
+    textarea(class="question-fillInput", style="display:block;", placeholder="您的答案")
+    
+mixin bigInput
+    textarea(class="question-bigInput", style="display:block;")
+    
+mixin comboxSlt(options)
+    select(class="question-select")
+        each option in options
+            option(class="question-select-option", value=option)=option
+            
+mixin discuss
+    textarea(class="question-discuss", style="display:block;", placeholder="如果您对问题有疑问，请写在这里")
+    
+mixin hasDiscuss(flag)
+    if flag
+        +discuss()
+        
+mixin tip(tips)
+    ul
+        each tip in tips
+            li(class="question-tip")=tip
+        
+mixin hasTip(flag, tips)
+    if(flag)
+        +tip(tips)
+
+
+
+each question in questions
+    div
+        +qBody(question.index, question.content)
+        div(class="question-inner")
+            case question.flag
+                when "radio"
+                    +radio(question.area)
+                    +hasDiscuss(question.hasDiscuss)
+                    +hasTip(question.tips, question.tips)
+
+                when "checkbox"
+                    +checkbox(question.area)
+                    +hasDiscuss(question.hasDiscuss)
+                    +hasTip(question.tips, question.tips)
+
+                when "fillInput"
+                    +fillInput()
+                    +hasDiscuss(question.hasDiscuss)
+                    +hasTip(question.tips, question.tips)
+
+                when "bigInput"
+                    +bigInput()
+                    +hasDiscuss(question.hasDiscuss)
+                    +hasTip(question.tips, question.tips)
+
+                when "comboxSlt"
+                    +comboxSlt(question.area)
+                    +hasDiscuss(question.hasDiscuss)
+                    +hasTip(question.tips, question.tips)
+        
