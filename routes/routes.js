@@ -11,4 +11,7 @@ module.exports = function (app) {
     app.get('/stock', function (req, res, next) {
         res.render('stock', {stock: '实时行情'});
     });
+    app.get('/user', function (req, res, next) {
+        res.render('user');
+    });
 };

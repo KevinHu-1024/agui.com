@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    script(type='text/javascript', src='lib/angular-1.4.1.min.js')
+    div(ng-app='userPage')
+        div.container.container-with-padding-top
+            div.page-header
+                h3=log
+            ul.nav.nav-tabs.nav-justified
+                li(role='presentation')
+                    a(href='#') 答题记录
+                li(role='presentation')
+                    a(href='#') 个人信息
+                li.active(role='presentation')
+                    a(href='#') 问卷管理
+        div.container
+    script(type='text/javascript', src='javascripts/test.js')
