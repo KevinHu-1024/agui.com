@@ -1,3 +1,14 @@
+var Question = require('../model/question');
+
+var callback = function(req, res, err, data){
+	if(err){
+		res.send({success: false, error: err});
+	}
+	else{
+		res.send({success: true, data: data});
+	}
+}
+
 module.exports = function (app) {
     app.get('/', function (req, res, next) {
         res.render('index');
@@ -11,7 +22,20 @@ module.exports = function (app) {
     app.get('/stock', function (req, res, next) {
         res.render('stock', {stock: '实时行情'});
     });
-    app.get('/user', function (req, res, next) {
-        res.render('user');
+    app.get('/user', function (req, res) {
+        var data = new Question({
+        id: 'String',    //问题id
+     index: 'String',    //问题序号
+      type: 'String',    //问题类型
+   content: 'String',    //问题题干
+      area: 'String',    //问题选项
+hasDiscuss: true,   //是否显示讨论框
+    isMust: false,   //是否为必答题
+      tips:['aaa','bbb']
+        });
+		data.save(function(err, data){
+			callback(req, res, err, data);
+		});
+        // res.render('user');
     });
 };

@@ -1,3 +1,21 @@
+var mongodb = require('./mongodb');
+var Schema = mongodb.mongoose.Schema;
+
+var UserSchema = new Schema ({
+          id: String,   //用户id
+        name: String,   //用户名
+       email: String,   //用户邮箱
+    password: String,   //用户密码
+         num: String,   //阿贵特权号
+       photo: String,   //用户头像
+  activities: Array,    //参加过的活动
+       group: String,   //用户组
+   isInvalid: Boolean   //登陆天数是否有效
+});
+
+var User = mongodb.mongoose.model("User", UserSchema);
+
+module.exports = User;
 
 
 // var userModel = {
