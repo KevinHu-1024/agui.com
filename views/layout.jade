@@ -14,6 +14,7 @@ html(lang="zh_CN")
         link(href='stylesheets/jumbotron.css', rel='stylesheet')
         link(href='stylesheets/common.css', rel='stylesheet')
         link(href='stylesheets/quiz.css', rel='stylesheet')
+        link(href='stylesheets/reg.css', rel='stylesheet')
         link(href='stylesheets/about.css', rel='stylesheet')
         link(href='stylesheets/quiz-content.css', rel='stylesheet')
         
@@ -41,6 +42,7 @@ html(lang="zh_CN")
                         div.form-group
                             input.form-control(type='password', placeholder='密码')
                         button.btn.btn-success(type='submit') 登录
+                        button.btn.btn-warning(type='submit', formaction='/reg') 注册
         block content
     div.container
         hr

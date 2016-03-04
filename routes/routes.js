@@ -22,6 +22,21 @@ module.exports = function (app) {
     app.get('/stock', function (req, res, next) {
         res.render('stock', {stock: '实时行情'});
     });
+    app.get('/reg', function (req, res, next) {
+        res.render('reg');
+    });
+    app.post('/reg', function (req, res, next) {
+
+    });
+    app.get('/login', function (req, res, next) {
+
+    });
+    app.post('/login', function (req, res, next) {
+
+    });
+    app.get('/logout', function (req, res, next) {
+        
+    });
     app.get('/user', function (req, res) {
         var data = new Question({
         id: 'String',    //问题id
