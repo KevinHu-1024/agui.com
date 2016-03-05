@@ -1,3 +1,4 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/aguiDB');
+var settings = require('../settings')
+mongoose.connect("mongodb://" + settings.host + "/" + settings.db);
 exports.mongoose = mongoose;
