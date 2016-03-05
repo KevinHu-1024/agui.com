@@ -4,21 +4,21 @@ block content
     div.container.container-with-padding-top
         div.page-header
             h1 注册
-        form.reg-form
+        form.reg-form(method='post')
             div.form-group
                 label(for='exampleInputEmail1') 电子邮件
-                input#exampleInputEmail1.form-control(type='email', placeholder='例如：kevin@agui.com')
+                input#exampleInputEmail1.form-control(type='email', placeholder='例如：kevin@agui.com', name='email')
             div.form-group
                 label(for='exampleInputEmail1') 客官编号
-                input#exampleInputEmail1.form-control(type='email', placeholder='例如：AGUI-123 不需要后面的字母')
+                input#exampleInputEmail1.form-control(type='text', placeholder='例如：AGUI-123 不需要后面的字母', name='num')
             div.form-group
                 label(for='exampleInputPassword1') 密码
-                input#exampleInputPassword1.form-control(type='password', placeholder='密码')
+                input#exampleInputPassword1.form-control(type='password', placeholder='密码', name='password')
             div.form-group
                 label(for='exampleInputPassword1') 确认密码
-                input#exampleInputPassword1.form-control(type='password', placeholder='确认密码')
+                input#exampleInputPassword1.form-control(type='password', placeholder='确认密码',name='password_re')
             div.checkbox
                     label
-                        input(type='checkbox')
+                        input(type='checkbox', name='xieyi')
                         同意用户协议
             button.btn.btn-warning(type='submit') 提交注册

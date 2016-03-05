@@ -13,6 +13,9 @@ var UserSchema = new Schema ({
    isInvalid: Boolean   //登陆天数是否有效
 });
 
+//Schema中的方法必须定义在生成model之前
+//xxxSchema.methods.xxx = function () {..}
+
 var User = mongodb.mongoose.model("User", UserSchema);
 
 module.exports = User;
