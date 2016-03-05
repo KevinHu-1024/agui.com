@@ -15,6 +15,14 @@ var UserSchema = new Schema ({
 
 //Schema中的方法必须定义在生成model之前
 //xxxSchema.methods.xxx = function () {..}
+UserSchema.statics.get = function (num, callback) {
+    this.find({num: num}, function (err, user) {
+        if(err) {
+            return callback(err);
+        }
+        callback(null, user);
+    })
+}
 
 var User = mongodb.mongoose.model("User", UserSchema);
 

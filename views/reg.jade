@@ -12,6 +12,9 @@ block content
                 label(for='exampleInputEmail1') 客官编号
                 input#exampleInputEmail1.form-control(type='text', placeholder='例如：AGUI-123 不需要后面的字母', name='num')
             div.form-group
+                label(for='exampleInputEmail1') 昵称
+                input#exampleInputEmail1.form-control(type='text', placeholder='例如：阿贵', name='name')
+            div.form-group
                 label(for='exampleInputPassword1') 密码
                 input#exampleInputPassword1.form-control(type='password', placeholder='密码', name='password')
             div.form-group
@@ -22,3 +25,7 @@ block content
                         input(type='checkbox', name='xieyi')
                         同意用户协议
             button.btn.btn-warning(type='submit') 提交注册
+        - if (success)
+            p=success
+        - if (error)
+            p=error
