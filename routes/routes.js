@@ -27,33 +27,40 @@ module.exports = function (app) {
     });
     app.get('/reg', function (req, res) {
         res.render('reg', {
+            scripts: ['reg.js'],
             success: req.flash('success').toString(),
             error: req.flash('error').toString() 
         });
     });
     app.post('/reg', function (req, res) {
-        
-        var password = req.body.password,
-        password_re = req.body['password_re'];
-        //检验用户两次输入的密码是否一致
-        if (password_re != password) {
-            // req.flash('error', '两次输入的密码不一致!'); 
-            return res.redirect('/reg');//返回注册页
-        }
+    //这里理想的效果应该是各种验证（两次密码/客官号正则/唯一性验证ajax）都在提交之前完成，提交按钮才enable
+    //这里理想的代码应该是只有保存
+    //     var password = req.body.password,
+    //     password_re = req.body['password_re'];
+    // //这部分以后整合进前端js处理
+    //     //检验用户两次输入的密码是否一致
+    //     if (password_re != password) {
+    //         req.flash('error', '两次输入的密码不一致!'); 
+    //         return res.redirect('/reg');//返回注册页
+    //     }
 
         var md5 = crypto.createHash('md5');
         password = md5.update(req.body.password).digest('hex');
         
-        
+    //这部分以后整合进前端ajax处理  
         var newUser = new User({
             email: req.body.email,
             password: password,
             num: req.body.num,
-            name: req.body.name
+            name: req.body.name,
+            id: '',
+            photo: '',
+            activities: [],
+            group:'',
+            isInvalid: false
         });
         
         User.get(newUser.num, function (err, user) {
-            console.log(err, user);
             if (user.length!=0) {
                 req.flash('error', '用户已存在!');
                 return res.redirect('/reg');//返回注册页
@@ -61,8 +68,8 @@ module.exports = function (app) {
             //如果不存在则新增用户
             newUser.save(function (err, user) {
                 if (err) {
-                req.flash('error', err);
-                return res.redirect('/reg');//注册失败返回主册页
+                    req.flash('error', err);
+                    return res.redirect('/reg');//注册失败返回主册页
                 }
                 req.session.user = user;//用户信息存入 session
                 req.flash('success', '注册成功!');
@@ -70,6 +77,32 @@ module.exports = function (app) {
             });
         });
     });
+    app.get('/verifyUserUnique', function (req, res) {
+        console.log(req.query.num);
+        User.get(req.query.num, function (err, user) {
+            if (user.length!=0) {
+                // req.flash('error', '用户已存在!');
+                console.log("02");
+                // return '02';//返回注册页
+                res.send('02');
+            } else {
+                console.log("01");
+                // return '01';
+                res.send('01');
+            }
+        });
+            //如果不存在则新增用户
+        //     newUser.save(function (err, user) {
+        //         if (err) {
+        //             req.flash('error', err);
+        //             return res.redirect('/reg');//注册失败返回主册页
+        //         }
+        //         req.session.user = user;//用户信息存入 session
+        //         req.flash('success', '注册成功!');
+        //         res.redirect('/reg');//注册成功后返回主页
+        //     });
+        // });
+    })
     app.get('/login', function (req, res, next) {
 
     });
@@ -80,19 +113,6 @@ module.exports = function (app) {
         
     });
     app.get('/user', function (req, res) {
-        var data = new Question({
-        id: 'String',    //问题id
-     index: 'String',    //问题序号
-      type: 'String',    //问题类型
-   content: 'String',    //问题题干
-      area: 'String',    //问题选项
-hasDiscuss: true,   //是否显示讨论框
-    isMust: false,   //是否为必答题
-      tips:['aaa','bbb']
-        });
-		data.save(function(err, data){
-			callback(req, res, err, data);
-		});
-        // res.render('user');
+        res.render('user');
     });
 };

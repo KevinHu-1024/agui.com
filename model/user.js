@@ -21,7 +21,7 @@ UserSchema.statics.get = function (num, callback) {
             return callback(err);
         }
         callback(null, user);
-    })
+    });
 }
 
 var User = mongodb.mongoose.model("User", UserSchema);

@@ -38,7 +38,7 @@ html(lang="zh_CN")
                 div#navbar.navbar-collapse.collapse
                     form.navbar-form.navbar-right
                         div.form-group
-                            input.form-control(type='text', placeholder='QQ/客官编号')
+                            input.form-control(type='text', placeholder='客官编号')
                         div.form-group
                             input.form-control(type='password', placeholder='密码')
                         button.btn.btn-success(type='submit', formaction='/login') 登录
@@ -52,4 +52,7 @@ html(lang="zh_CN")
                 
 script(src='//cdn.bootcss.com/jquery/1.11.3/jquery.min.js')
 script(src='//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js')
-// script(src="javascripts/ajax.js")
+script(src='javascripts/utils.js')
+-if (scripts)
+    each script in scripts
+        script(src='javascripts/' + script)

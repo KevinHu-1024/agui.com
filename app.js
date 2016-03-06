@@ -10,7 +10,7 @@ var settings = require('./settings');
 var flash = require('connect-flash');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
-var service = require('./public/javascripts/services');
+// var service = require('./public/javascripts/services');
 
 var app = express();
 
