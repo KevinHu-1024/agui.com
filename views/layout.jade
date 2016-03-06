@@ -10,14 +10,14 @@ html(lang="zh_CN")
         // Bootstrap core CSS
         link(href='//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css', rel='stylesheet')
         // Custom styles for this template
-        link(href='stylesheets/nav.css', rel='stylesheet')
-        link(href='stylesheets/jumbotron.css', rel='stylesheet')
-        link(href='stylesheets/common.css', rel='stylesheet')
-        link(href='stylesheets/quiz.css', rel='stylesheet')
-        link(href='stylesheets/reg.css', rel='stylesheet')
-        link(href='stylesheets/about.css', rel='stylesheet')
-        link(href='stylesheets/quiz-content.css', rel='stylesheet')
         
+        //common css
+        link(href='stylesheets/nav.css', rel='stylesheet')
+        link(href='stylesheets/common.css', rel='stylesheet')
+        
+        -if (stylesheets)
+            each stylesheet in stylesheets
+                link(href='stylesheets/' + stylesheet, rel='stylesheet')       
         // Just for debugging purposes. Don't actually copy these 2 lines!
         //if lt IE 9
             script(src='../../assets/js/ie8-responsive-file-warning.js')
