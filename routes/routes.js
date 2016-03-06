@@ -27,15 +27,15 @@ module.exports = function (app) {
     });
     app.get('/reg', function (req, res) {
         res.render('reg', {
-            scripts: ['reg.js'],
-            success: req.flash('success').toString(),
-            error: req.flash('error').toString() 
-        });
+                            scripts: ['reg.js'],
+                            success: req.flash('success').toString(),
+                            error: req.flash('error').toString() 
+                          });
     });
     app.post('/reg', function (req, res) {
         var md5 = crypto.createHash('md5');
-        password = md5.update(req.body.password).digest('hex');  
-    //这部分以后整合进前端ajax处理  
+        var password = md5.update(req.body.password).digest('hex');  
+
         var newUser = new User({
             email: req.body.email,
             password: password,
@@ -47,6 +47,7 @@ module.exports = function (app) {
             group:'',
             isInvalid: false
         });
+        
         newUser.save(function (err, user) {
             if (err) {
                 req.flash('error', err);
