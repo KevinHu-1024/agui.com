@@ -80,7 +80,7 @@ module.exports = function (app) {
 
     });
     app.post('/login', function (req, res, next) {
-
+        res.send('登陆响应');
     });
     app.get('/logout', function (req, res, next) {
         

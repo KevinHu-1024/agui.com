@@ -34,15 +34,15 @@ html(lang="zh_CN")
                         span.icon-bar
                         span.icon-bar
                         span.icon-bar
-                    a.navbar-brand(href='/') 阿贵龙门客栈
+                    a#logo.navbar-brand(href='/') 阿贵龙门客栈
                 div#navbar.navbar-collapse.collapse
-                    form.navbar-form.navbar-right
+                    form.navbar-form.navbar-right(method='post')
                         div.form-group
-                            input.form-control(type='text', placeholder='客官编号')
+                            input.form-control(type='text', placeholder='客官编号', name='userNum')
                         div.form-group
-                            input.form-control(type='password', placeholder='密码')
+                            input.form-control(type='password', placeholder='密码', name='password')
                         button.btn.btn-success(type='submit', formaction='/login') 登录
-                        button.btn.btn-warning(type='submit', formaction='/reg') 注册
+                        a.btn.btn-warning.nav-btn(href='/reg') 注册
         block content
     div.container
         hr

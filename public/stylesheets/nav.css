@@ -2,7 +2,10 @@
     background-color: black;
     border-color: transparent;
 }
-.navbar-inverse a {
+.navbar-inverse a#logo {
     font-size: 25px;
     color: white;
+}
+.nav-btn {
+    margin-left: 3px;
 }
