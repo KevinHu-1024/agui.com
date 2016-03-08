@@ -1,7 +1,6 @@
 var Question = require('../model/question');
 var User = require('../model/user');
-var crypto = require('crypto')
-// var services = require('../public/javascripts/services');
+var services = require('../service/service');
 
 var callback = function(req, res, err, data){
 	if(err){
@@ -42,8 +41,7 @@ module.exports = function (app) {
                           });
     });
     app.post('/reg', function (req, res) {
-        var md5 = crypto.createHash('md5');
-        var password = md5.update(req.body.password).digest('hex');  
+        var password = services.parseToMd5(req.body.password);  
 
         var newUser = new User({
             email: req.body.email,
@@ -70,16 +68,18 @@ module.exports = function (app) {
     app.get('/verifyUserUnique', function (req, res) {
         User.get(req.query.num, function (err, user) {
             if (user.length!=0) {
-                res.send('02');
+                res.send('02');//说明用户已存在
             } else {
-                res.send('01');
+                res.send('01');//说明用户不存在
             }
         });
     })
     app.get('/login', function (req, res, next) {
-
+        
     });
     app.post('/login', function (req, res, next) {
+        var password = services.parseToMd5(req.body.password);
+        
         res.send('登陆响应');
     });
     app.get('/logout', function (req, res, next) {

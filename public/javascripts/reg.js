@@ -15,6 +15,8 @@
     var button = document.getElementById('reg-submit');
     var array = [email, pw, pwRe, name, xieyi];
     
+    var numInfo = document.getElementById('num-info');
+    
     for (var i = 0; i < array.length; i++) {
         array[i].onkeyup = function () {
             checkInputs.call(this);
@@ -51,9 +53,20 @@
     function checkInputs() {
         switch (this.id) {
             case 'user-num':
-                userNumStatus = (utils.reg.verifyUserNum(this.value))&&(utils.reg.verifyUserUnique(this.value));
-                changeInputStyle.call(this, userNumStatus);
-                checkStatus();
+                var _this = this;
+                numInfo.innerHTML = '正在向服务器确认…';
+                utils.reg.verifyUserUnique(this.value, function (err, result) {                   
+                    if (err) {
+                        numInfo.innerHTML = err;
+                        console.log(err);                       
+                    } else {
+                        userNumStatus = (utils.reg.verifyUserNum(_this.value));
+                        userNumStatus?numInfo.innerHTML = '编号有效':numInfo.innerHTML = '编号格式有误';
+                        console.log(userNumStatus);
+                    }
+                    changeInputStyle.call(_this, userNumStatus);
+                    checkStatus();
+                });                
                 break;
             case 'email':
                 emailStatus = utils.exp.userEmailReg.test(this.value);

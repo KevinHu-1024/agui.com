@@ -6,7 +6,15 @@ var utils = {
         userPwReg: /^[\S|\s]{6,16}$/,
         userPhoneReg: /^(0|86|17951)?((13[0-9]|15[012356789]|17[05678]|18[0-9]|14[57])[0-9]{8})$/
     },
-    
+    common: {
+        overTime: function overTime(time, info, callback) {
+            var str = info;
+            var overTimer = window.setTimeout(function () {
+                callback(str+time, null);
+            }, time);
+            return overTimer;//返回定时器索引，供清除使用
+        }
+    },
     reg: {//邮箱/两次密码/客官号正则/唯一性验证ajax
         verifyInputEmail: function verifyInputEmail(em) {
             return utils.exp.userEmailReg.test(em);
@@ -20,32 +28,32 @@ var utils = {
         verifyUserName: function verifyUserName(name) {
             return utils.exp.userNameReg.test(name);
         },
-        verifyUserUnique: function verifyUserUnique(num) {
+        verifyUserUnique: function verifyUserUnique(num, callback) {
             var xhr = new XMLHttpRequest();
             var flag =false;
-            xhr.open('GET', '/verifyUserUnique?num='+num, false);
-            var timer = window.setTimeout(function() {
-                        console.log("重复"+"服务器超时！");
-                        flag = false;
-                        return flag;
-                    }, 3000);
+            xhr.open('GET', '/verifyUserUnique?num='+num, true);
+            var overTimer = utils.common.overTime(4000, '服务器超时', callback);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState==4 && xhr.status==200) {
-                        window.clearTimeout(timer);
-                        if(xhr.responseText == '01') {
-                            flag = true;
-                        } else {
-                            flag = false;
-                        }
+                    window.clearTimeout(overTimer);
+                    if(xhr.responseText == '01') {
+                        flag = true;
+                    } else {
+                        flag = false;
                     }
-                };
-            try {
-                xhr.send();
-            } catch(e) {
-                console.log(e);
-                flag=false;
-            }
-            return flag;
+                    typeof(callback) === 'function'?callback(null, flag):callback('typeError', null);
+                }
+            };
+           try {
+               xhr.send();
+           } catch (error) {
+               callback(error);
+           }
+        }
+    },
+    login: {
+        verifyUserLogin: function verifyUserLogin(num, password) {
+            
         }
     }
 }

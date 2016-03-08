@@ -8,7 +8,7 @@ html(lang="zh_CN")
         meta(name='author', content='')
         link(rel='icon', href='../../favicon.ico')
         // Bootstrap core CSS
-        link(href='//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css', rel='stylesheet')
+        link(href='lib/bootstrap-3.3.5/css/bootstrap.min.css', rel='stylesheet')
         // Custom styles for this template
         
         //common css
@@ -37,12 +37,13 @@ html(lang="zh_CN")
                     a#logo.navbar-brand(href='/') 阿贵龙门客栈
                 div#navbar.navbar-collapse.collapse
                     form.navbar-form.navbar-right(method='post')
+                        label#login-status 
                         div.form-group
                             input.form-control(type='text', placeholder='客官编号', name='userNum')
                         div.form-group
                             input.form-control(type='password', placeholder='密码', name='password')
                         button.btn.btn-success(type='submit', formaction='/login') 登录
-                        a.btn.btn-warning.nav-btn(href='/reg') 注册
+                        a.btn.btn-warning.nav-btn(href='/reg') 注册                        
         block content
     div.container
         hr
@@ -51,8 +52,9 @@ html(lang="zh_CN")
             p &copy; Kevin.Hu 2016
                 
 script(src='//cdn.bootcss.com/jquery/1.11.3/jquery.min.js')
-script(src='//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js')
+script(src='lib/bootstrap-3.3.5/js/bootstrap.min.js')
 script(src='javascripts/utils.js')
+// script(src='javascripts/login.js')
 -if (scripts)
     each script in scripts
         script(src='javascripts/' + script)
