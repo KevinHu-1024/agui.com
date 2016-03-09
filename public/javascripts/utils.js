@@ -37,7 +37,7 @@ var utils = {
                 if (xhr.readyState==4 && xhr.status==200) {
                     window.clearTimeout(overTimer);
                     var res = window.JSON.parse(xhr.responseText);
-                    console.log(res);
+                    console.log(res.instance);
                     if(res.code == '01') {
                         flag = true;//说明用户不存在，唯一
                     } else {

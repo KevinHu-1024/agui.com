@@ -66,17 +66,9 @@ module.exports = function (app) {
         });
     });
     app.get('/verifyUserUnique', function (req, res) {
-        // console.log(req.query.num);
         service.verifyUnique(User, req.query.num, function (json) {
             res.send(json);
-        });
-        // User.get(req.query.num, function (err, user) {
-        //     if (user.length!=0) {
-        //         res.send('02');//说明用户已存在
-        //     } else {
-        //         res.send('01');//说明用户不存在
-        //     }
-        // });
+        }, false);
     })
     app.get('/login', function (req, res, next) {
         

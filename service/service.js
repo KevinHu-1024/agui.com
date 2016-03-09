@@ -8,14 +8,14 @@ module.exports = {
         var result = md5.update(src).digest('hex');
         return result;
     },
-    verifyUnique: function verifyUnique(collectionName, forCheck, callback) {
+    verifyUnique: function verifyUnique(collectionName, forCheck, callback, returnInstance) {
         try {
                 collectionName.get(forCheck, function (err, instance) {
                 if (err) {
                     callback({error: err});
                 } else {
-                    if (instance.length!=0) {
-                        callback({error:null, code:'02', instance:instance});
+                    if (instance.length!=0) {                       
+                        returnInstance?(callback({error:null, code:'02', instance:instance})):(callback({error:null, code:'02', instance:null}));
                     } else {
                         callback({error:null, code:'01', instance: null});
                     }
