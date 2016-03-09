@@ -1,6 +1,6 @@
 var Question = require('../model/question');
 var User = require('../model/user');
-var services = require('../service/service');
+var service = require('../service/service');
 
 var callback = function(req, res, err, data){
 	if(err){
@@ -41,7 +41,7 @@ module.exports = function (app) {
                           });
     });
     app.post('/reg', function (req, res) {
-        var password = services.parseToMd5(req.body.password);  
+        var password = service.parseToMd5(req.body.password);  
 
         var newUser = new User({
             email: req.body.email,
@@ -66,13 +66,17 @@ module.exports = function (app) {
         });
     });
     app.get('/verifyUserUnique', function (req, res) {
-        User.get(req.query.num, function (err, user) {
-            if (user.length!=0) {
-                res.send('02');//说明用户已存在
-            } else {
-                res.send('01');//说明用户不存在
-            }
+        // console.log(req.query.num);
+        service.verifyUnique(User, req.query.num, function (json) {
+            res.send(json);
         });
+        // User.get(req.query.num, function (err, user) {
+        //     if (user.length!=0) {
+        //         res.send('02');//说明用户已存在
+        //     } else {
+        //         res.send('01');//说明用户不存在
+        //     }
+        // });
     })
     app.get('/login', function (req, res, next) {
         

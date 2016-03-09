@@ -36,10 +36,12 @@ var utils = {
             xhr.onreadystatechange = function () {
                 if (xhr.readyState==4 && xhr.status==200) {
                     window.clearTimeout(overTimer);
-                    if(xhr.responseText == '01') {
-                        flag = true;
+                    var res = window.JSON.parse(xhr.responseText);
+                    console.log(res);
+                    if(res.code == '01') {
+                        flag = true;//说明用户不存在，唯一
                     } else {
-                        flag = false;
+                        flag = false;//说明用户不存在，不唯一
                     }
                     typeof(callback) === 'function'?callback(null, flag):callback('typeError', null);
                 }

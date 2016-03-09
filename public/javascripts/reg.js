@@ -59,10 +59,13 @@
                     if (err) {
                         numInfo.innerHTML = err;
                         console.log(err);                       
-                    } else {
+                    } else if(result) {
                         userNumStatus = (utils.reg.verifyUserNum(_this.value));
                         userNumStatus?numInfo.innerHTML = '编号有效':numInfo.innerHTML = '编号格式有误';
                         console.log(userNumStatus);
+                    } else {
+                        userNumStatus = result;
+                        numInfo.innerHTML = '用户已存在';
                     }
                     changeInputStyle.call(_this, userNumStatus);
                     checkStatus();
