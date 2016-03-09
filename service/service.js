@@ -10,6 +10,7 @@ module.exports = {
     },
     verifyUnique: function verifyUnique(collectionName, forCheck, callback, returnInstance) {
         try {
+                // console.log(forCheck, callback, returnInstance);
                 collectionName.get(forCheck, function (err, instance) {
                 if (err) {
                     callback({error: err});

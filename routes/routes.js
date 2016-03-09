@@ -60,7 +60,7 @@ module.exports = function (app) {
                 req.flash('error', err);
                 return res.redirect('/reg');//注册失败返回主册页
             }
-            req.session.user = user;//用户信息存入 session
+            req.session.user = newUser;//用户信息存入 session
             req.flash('success', '注册成功!');
             res.redirect('/reg');//注册成功后返回主页
         });
@@ -69,14 +69,42 @@ module.exports = function (app) {
         service.verifyUnique(User, req.query.num, function (json) {
             res.send(json);
         }, false);
-    })
+    });
     app.get('/login', function (req, res, next) {
         
     });
-    app.post('/login', function (req, res, next) {
-        var password = services.parseToMd5(req.body.password);
-        
-        res.send('登陆响应');
+    app.post('/login', function (req, res) {
+        var password = service.parseToMd5(req.body.password);
+        // console.log(req.body);
+        // service.verifyUnique(User, req.query.num, function (json) {
+        //     res.send(json);
+        // }, true);
+        service.verifyUnique(User, req.body.num, function (json) {
+            if (json.instance) {
+                var pwFromDB = json.instance[0].password;
+                if (pwFromDB===password) {
+                    console.log('02登录成功');
+                    res.send({err: null, code: '02', instance: json.instance[0]});
+                    req.session.user = json.instance[0];
+                    req.flash('登录成功！');//登录成功
+                    // res.redirect('/');
+                } else {
+                    console.log('04密码错误');
+                    res.send({err: null, code: '04', instance: null});//密码错误
+                }
+            } else {
+                console.log('01用户不存在');
+                res.send({err: null, code: '01', instance: null});//用户不存在
+            }
+            //if json.instance.length!=0
+                //获取用户密码->比较json.instance[0].password
+                    //if 相同 -> res.send(登陆成功，存session/flash)
+                    //else  -> res.send(密码错误)
+            //else 用户不存在
+                //res.send(用户不存在)
+            //json.instance =null;
+        },true);
+        // res.send('登陆响应');
     });
     app.get('/logout', function (req, res, next) {
         

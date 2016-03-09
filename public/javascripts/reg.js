@@ -53,21 +53,21 @@
     function checkInputs() {
         switch (this.id) {
             case 'user-num':
-                var _this = this;
+                var that = this;
                 numInfo.innerHTML = '正在向服务器确认…';
                 utils.reg.verifyUserUnique(this.value, function (err, result) {                   
                     if (err) {
                         numInfo.innerHTML = err;
                         console.log(err);                       
                     } else if(result) {
-                        userNumStatus = (utils.reg.verifyUserNum(_this.value));
+                        userNumStatus = (utils.reg.verifyUserNum(that.value));
                         userNumStatus?numInfo.innerHTML = '编号有效':numInfo.innerHTML = '编号格式有误';
                         console.log(userNumStatus);
                     } else {
                         userNumStatus = result;
                         numInfo.innerHTML = '用户已存在';
                     }
-                    changeInputStyle.call(_this, userNumStatus);
+                    changeInputStyle.call(that, userNumStatus);
                     checkStatus();
                 });                
                 break;
