@@ -25,5 +25,16 @@ module.exports = {
         } catch (error) {
             console.log(error);
         }
+    },
+    checkLogin: function checkLogin(request, hasLoginCallback, notLoginCallback) {
+        typeof(hasLoginCallback) != 'function'?console.log('typeError') : null;
+        typeof(notLoginCallback) != 'function'?console.log('typeError') : null;
+        if (!request.session.user) {
+            notLoginCallback();
+        } else if (request.session.user) {
+            hasLoginCallback();
+        } else {
+            return 'checkLoginError';
+        }
     }
 }
