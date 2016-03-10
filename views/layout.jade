@@ -36,14 +36,26 @@ html(lang="zh_CN")
                         span.icon-bar
                     a#logo.navbar-brand(href='/') 阿贵龙门客栈
                 div#navbar.navbar-collapse.collapse
-                    form.navbar-form.navbar-right(method='post')
-                        label#login-status 
-                        div.form-group
-                            input.form-control(type='text', placeholder='客官编号', name='num')
-                        div.form-group
-                            input.form-control(type='password', placeholder='密码', name='password')
-                        button.btn.btn-success(type='submit', formaction='/login') 登录
-                        a.btn.btn-warning.nav-btn(href='/reg') 注册                        
+                    -if (!user)
+                        form.navbar-form.navbar-right(method='post')
+                            label#login-status 
+                            div.form-group
+                                input.form-control(type='text', placeholder='客官编号', name='num')
+                            div.form-group
+                                input.form-control(type='password', placeholder='密码', name='password')
+                            button.btn.btn-success(type='submit', formaction='/login') 登录
+                            a.btn.btn-warning.nav-btn(href='/reg') 注册  
+                    -else 
+                        div.navbar-form.navbar-right.btn-group
+                            div.btn-group
+                                button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') 更多&nbsp&nbsp
+                                    span.caret
+                                ul.dropdown-menu
+                                    li
+                                        a(href='user')=user.name
+                                    li.divider(role='separator')
+                                    li
+                                        a(href='/logout') 退出登录                                            
         block content
     div.container
         hr
