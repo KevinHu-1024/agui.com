@@ -21,7 +21,7 @@ module.exports = function (app) {
     app.get('/quiz', function (req, res, next) {//问卷部分只能是登录用户才能进入
         service.checkLogin(req, next, function () {
             req.flash('error', '未登录!'); 
-            res.redirect('/');
+            res.redirect('/');//重定向到常见问题页
         });
     });
     app.get('/quiz', function (req, res) {
@@ -38,10 +38,22 @@ module.exports = function (app) {
                                 lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
                             });
     });
+    app.get('/stock', function (req, res, next) {//行情部分只能是登录用户才能进入
+        service.checkLogin(req, next, function () {
+            req.flash('error', '未登录!'); 
+            res.redirect('/');//重定向到常见问题页
+        });
+    });
     app.get('/stock', function (req, res) {
         res.render('stock', {
                                 user: req.session.user,
                                 stock: '实时行情'});
+    });
+    app.get('/reg', function (req, res, next) {//注册部分只能是未登录用户才能进入
+        service.checkLogin(req, function () {
+            req.flash('error', '您已登录!'); 
+            res.redirect('back');
+        }, next);
     });
     app.get('/reg', function (req, res) {
         res.render('reg', {                                
@@ -81,6 +93,12 @@ module.exports = function (app) {
             res.send(json);
         }, false);
     });
+    app.get('/login', function (req, res, next) {//登录部分只能是未登录用户才能进入
+        service.checkLogin(req, function () {
+            req.flash('error', '您已登录!'); 
+            res.redirect('back');
+        }, next);
+    });
     app.get('/login', function (req, res) {
         
     });
@@ -105,9 +123,21 @@ module.exports = function (app) {
             }
         },true);
     });
+    app.get('/logout', function (req, res, next) {//登出部分只能是登录用户才能进入
+        service.checkLogin(req, next, function () {
+            req.flash('error', '未登录!'); 
+            res.redirect('/user');//重定向到用户页
+        });
+    });
     app.get('/logout', function (req, res) {
         req.session.user= null;
         res.redirect('/');
+    });
+    app.get('/user', function (req, res, next) {//用户部分只能是登录用户才能进入
+        service.checkLogin(req, next, function () {
+            req.flash('error', '未登录!'); 
+            res.redirect('/');//重定向到登录页
+        });
     });
     app.get('/user', function (req, res) {
         res.render('user', {
