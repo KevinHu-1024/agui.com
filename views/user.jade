@@ -11,7 +11,8 @@ block content
                     a(href='#') 答题记录
                 li(role='presentation')
                     a(href='#') 个人信息
-                li.active(role='presentation')
-                    a(href='#') 问卷管理
+                - if(/(admin|volunteer)/.test(user.group))
+                    li.active(role='presentation')
+                        a(href='#') 问卷管理
         div.container
     script(type='text/javascript', src='javascripts/test.js')
