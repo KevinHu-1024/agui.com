@@ -9,10 +9,14 @@ block content
             ul.nav.nav-tabs.nav-justified
                 li(role='presentation')
                     a(href='#') 答题记录
-                li(role='presentation')
+                li.active(role='presentation')
                     a(href='#') 个人信息
-                - if(/(admin|volunteer)/.test(user.group))
-                    li.active(role='presentation')
+                - if(/admin/.test(user.group))
+                    li(role='presentation')
                         a(href='#') 问卷管理
+                - if(/volunteer/.test(user.group))
+                    li(role='presentation')
+                        a(href='#') 志愿者工作
         div.container
-    script(type='text/javascript', src='javascripts/test.js')
+
+    script(type='text/javascript', src='userPage/userPage.js')
