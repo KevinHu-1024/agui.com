@@ -11,7 +11,7 @@ block content
                 li(role='presentation', ng-repeat = 'tab in tabs', ui-sref-active='active')
                     a(ui-sref='{{tab.state}}') {{tab.description}}
         div.container
-            div(ui-view='')
+            div(ui-view='', class="user-sub-contaniner")
 
     script(type='text/javascript', src='userPage/userPage.js')
     script(type='text/javascript', src='userPage/config/userPage.config.js')
