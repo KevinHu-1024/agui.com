@@ -16,23 +16,13 @@ userPage.config(function ($stateProvider, $urlRouterProvider) {
             url: '/admin',
             templateUrl: 'userPage/views/userPage.admin.view.html'
         })
-        .state('admin.detail', {
-            views: {
-                '': {
-                    templateUrl: 'userPage/views/userPage.admin.main.view.html'
-                },
-                'edit': {
-                    templateUrl: 'userPage/views/userPage.admin.editQuestion.view.html'
-                }
-            }
+        .state('admin.main', {
+            url: '/main',
+            templateUrl: 'userPage/views/userPage.admin.main.view.html'
+        })
+         .state('admin.edit', {
+            url: '/edit',
+            templateUrl: 'userPage/views/userPage.admin.editQuestion.view.html'
         });
-        // .state('admin.main', {
-        //     url: '/main',
-        //     templateUrl: 'userPage/views/userPage.admin.main.view.html'
-        // })
-        // .state('admin.edit', {
-        //     url: '/edit',
-        //     templateUrl: 'userPage/views/userPage.admin.editQuestion.view.html'
-        // });
     $urlRouterProvider.otherwise('/userLog');  
 })

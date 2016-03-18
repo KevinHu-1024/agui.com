@@ -17,7 +17,7 @@ userPage.controller('tabController', ['$scope', '$rootScope', '$state', function
         },
         {
             description: '问卷管理',
-            state: 'admin',
+            state: 'admin.main',
             templateUrl: 'views/userPage.admin.view.html'
         }
     ];
